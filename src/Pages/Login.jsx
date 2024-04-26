@@ -1,9 +1,29 @@
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 import login from "../Lotties/login.json"
+import { AuthContext } from "../Providers/AuthProvider";
+import { useContext } from "react";
 const Login = () => {
+    const {signIn,googleLogin,githubLogin}=useContext(AuthContext)
+    const navigate =useNavigate();
+    const location=useLocation();
+    const handleLogin=(e) => {
+        e.preventDefault();
+        const form = new FormData(e.currentTarget);
+        const email=form.get('email');
+        const password=form.get('password');
+        signIn(email,password)
+        .then( (res)=>
+    {
+        alert("Successfully logged in")
+        navigate(location?.state? location.state : '/')
+    })
+        .catch(()=>{
+            alert('Invalid Credentials')
+        })
+    };
     return (
         <div className="">
             <div className="hero min-h-[90vh] bg-svg-background">
@@ -15,7 +35,7 @@ const Login = () => {
     <div className="card shrink-0 w-full max-w-sm shadow-2xl ">
         <p className="text-center text-xl font-semibold py-2 text-primary">WELCOME BACK !</p>
         <div className="size-40 mx-auto"><Lottie animationData={login} loop={true} /></div>
-      <form  className="card-body my-0 py-0">
+      <form  className="card-body my-0 py-0" onSubmit={handleLogin}>
 
         <div className="form-control">
           <label className="label">
@@ -43,9 +63,15 @@ const Login = () => {
       
       <p className="text-center text-xl font-bold">OR</p>
       <div className=" flex flex-col px-8 py-2 gap-2">
-        <button  className="btn bg-info border-0"><FaGithub className="text-3xl text-white" /> <span className="text-xl text-white font-semibold">Continue with Github</span>
+        <button onClick={()=>githubLogin()
+        .then(()=>{
+            alert("Successfully logged in")
+            navigate(location?.state? location.state : '/')})}  className="btn bg-info border-0"><FaGithub className="text-3xl text-white" /> <span className="text-xl text-white font-semibold">Continue with Github</span>
         </button>
-        <button  className="btn"><FcGoogle className="text-3xl" /><span className="text-xl font-semibold">Continue with Google</span></button>
+        <button onClick={()=>googleLogin()
+        .then(()=>{
+            alert("Successfully logged in")
+            navigate(location?.state? location.state : '/')})}  className="btn"><FcGoogle className="text-3xl" /><span className="text-xl font-semibold">Continue with Google</span></button>
       </div>
       <p className="pl-8 pb-4">Do not have an account ? <span className="link text-primary font-semibold"><Link to={'/register'}>Register</Link></span></p>
     </div>
