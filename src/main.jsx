@@ -9,11 +9,13 @@ import Root from './Root/Root';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
 import AuthProvider from './Providers/AuthProvider';
+import NotFound from './Pages/NotFound';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement:<NotFound></NotFound>,
     children:[
       {
         path:'/',
