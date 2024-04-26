@@ -25,3 +25,8 @@
   {
     background-image: url('/bg.svg');
   }
+ 
+  html {
+    cursor: url('/cursor.png') ,auto;
+    
+}

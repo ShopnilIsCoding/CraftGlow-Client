@@ -1,20 +1,57 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { IoEye } from "react-icons/io5";
 import { IoIosEyeOff } from "react-icons/io";
+import { AuthContext } from "../Providers/AuthProvider";
+import Lottie from "lottie-react";
+import register from "../Lotties/register.json"
 const Register = () => {
     const[visible,setVisible]=useState(false);
+    const {createUser,updateUserProfile,loading} =useContext(AuthContext);
+    const navigate=useNavigate();
+    const handleRegister=(e)=>
+    {
+        e.preventDefault();
+        const form = new FormData(e.currentTarget)
+        const email=form.get('email');
+        const password=form.get('password');
+        const name=form.get('name');
+        const photo=form.get('photo');
+        const newUser={email,password,name,photo};
+        console.log(newUser);
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+        if (!passwordRegex.test(password)) {
+            alert('Password must be at least 6 characters and contain at least one uppercase and one lowercase letter.');
+            return;
+          }
+
+          createUser(email,password)
+        .then(res=>{console.log(res.user)
+          updateUserProfile(name,photo)
+          .then(()=>{
+
+             alert('Registered Successfully');
+             window.location.reload();
+             
+
+          })
+          navigate('/');
+           
+        })
+        .catch(err=>{console.error(err)})
+    }
     return (
         <div className="">
           
             <div className="hero min-h-[90vh] bg-svg-background">
   <div className="hero-content flex-col lg:flex-row-reverse">
     <div className="text-center lg:text-left">
+    <div className="size-full lg:size-96 "><Lottie animationData={register} loop={true} /></div>
       <h1 className="text-5xl font-bold text-primary">Register now!</h1>
       <p className="py-6 text-xl">Unlock the world of exquisite crafts at <span className="font-bold bg-gradient-to-r from-orange-500 via-violet-500 to-rose-500 text-transparent bg-clip-text bg-300% animate-gradient">CraftGlow</span>. Register now for exclusive access to premium projects and personalized recommendations.</p>
     </div>
     <div className="card shrink-0 w-full max-w-sm shadow-2xl ">
-      <form  className="card-body">
+      <form  className="card-body" onSubmit={handleRegister}>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Name</span>

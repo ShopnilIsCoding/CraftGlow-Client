@@ -1,7 +1,8 @@
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
-
+import Lottie from "lottie-react";
+import login from "../Lotties/login.json"
 const Login = () => {
     return (
         <div className="">
@@ -13,7 +14,7 @@ const Login = () => {
     </div>
     <div className="card shrink-0 w-full max-w-sm shadow-2xl ">
         <p className="text-center text-xl font-semibold py-2 text-primary">WELCOME BACK !</p>
-        <img src="/welcome.png" className="size-36 mx-auto" alt="" />
+        <div className="size-40 mx-auto"><Lottie animationData={login} loop={true} /></div>
       <form  className="card-body my-0 py-0">
 
         <div className="form-control">
