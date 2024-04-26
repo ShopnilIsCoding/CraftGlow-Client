@@ -63,7 +63,7 @@ const Navbar = () => {
 
   </div>
   <div className="navbar-end space-x-2">
-    <a className="btn btn-outline btn-success">Log In</a>
+    <Link to={'/login'} className="btn btn-outline btn-success">Log In</Link>
     <a className="btn  btn-info">Register</a>
     <div className="dropdown dropdown-end">
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
