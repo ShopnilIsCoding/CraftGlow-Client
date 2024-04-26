@@ -45,13 +45,13 @@ const Navbar = () => {
       <NavLink to={'/all'} className={({ isActive}) =>
     isActive ? "border-b-2 border-b-rose-300  p-2 text-rose-300 font-semibold text-center delay-75 transition-all" : " p-2 text-violet-400 font-semibold"
   }>All Items</NavLink>
-      <NavLink to={'/add'} className={({ isActive}) =>
+      {user?<NavLink to={'/add'} className={({ isActive}) =>
     isActive ? "border-b-2 border-b-rose-300  p-2 text-rose-300 font-semibold text-center delay-75 transition-all" : " p-2 text-violet-400 font-semibold"
-  }>Add Item</NavLink>
+  }>Add Item</NavLink>:<></>}
       
-      <NavLink to={'/my'} className={({ isActive}) =>
+      {user && <NavLink to={'/my'} className={({ isActive}) =>
     isActive ? "border-b-2 border-b-rose-300  p-2 text-rose-300 font-semibold text-center delay-75 transition-all" : " p-2 text-violet-400   font-semibold"
-  }>My List</NavLink>
+  }>My List</NavLink>}
 
 <label className='cursor-pointer grid place-items-center '>
           <input
@@ -101,13 +101,13 @@ const Navbar = () => {
       <NavLink to={'/all'} className={({ isActive}) =>
     isActive ? "border-b-2 border-b-rose-300  p-2 text-rose-300 font-semibold text-center delay-75 transition-all" : " p-2 text-violet-400 font-semibold"
   }>All Items</NavLink>
-      <NavLink to={'/add'} className={({ isActive}) =>
+      {user && <NavLink to={'/add'} className={({ isActive}) =>
     isActive ? "border-b-2 border-b-rose-300  p-2 text-rose-300 font-semibold text-center delay-75 transition-all" : " p-2 text-violet-400 font-semibold"
-  }>Add Item</NavLink>
+  }>Add Item</NavLink>}
       
-      <NavLink to={'/my'} className={({ isActive}) =>
+      {user && <NavLink to={'/my'} className={({ isActive}) =>
     isActive ? "border-b-2 border-b-rose-300  p-2 text-rose-300 font-semibold text-center delay-75 transition-all" : " p-2 text-violet-400   font-semibold"
-  }>My List</NavLink>
+  }>My List</NavLink>}
 
 
   </div>
