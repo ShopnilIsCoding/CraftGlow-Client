@@ -8,23 +8,23 @@ const Login = () => {
             <div className="hero min-h-[90vh] bg-svg-background">
   <div className="hero-content flex-col lg:flex-row-reverse">
     <div className="text-center lg:text-left">
-      <h1 className="text-5xl font-bold text-[#50C2C9]">Login now!</h1>
+      <h1 className="text-5xl font-bold text-primary">Login now!</h1>
       <p className="py-6 text-xl">Welcome back to CraftGlow! Log in now to access your personalized craft  and stay updated on the latest paper and glass art projects.</p>
     </div>
-    <div className="card shrink-0 w-full max-w-sm shadow-2xl glass">
-        <p className="text-center text-xl font-semibold py-2 text-[#50C2C9]">WELCOME BACK !</p>
+    <div className="card shrink-0 w-full max-w-sm shadow-2xl ">
+        <p className="text-center text-xl font-semibold py-2 text-primary">WELCOME BACK !</p>
         <img src="/welcome.png" className="size-36 mx-auto" alt="" />
       <form  className="card-body my-0 py-0">
 
         <div className="form-control">
           <label className="label">
-            <span className="label-text text-info">Email</span>
+            <span className="label-text ">Email</span>
           </label>
           <input type="email" placeholder="Email" name="email" className="input input-bordered" required />
         </div>
         <div className="form-control">
           <label className="label">
-            <span className="label-text text-info">Password</span>
+            <span className="label-text ">Password</span>
           </label>
           <div className="relative">
           <input type="password"  name="password" placeholder="Password" className="input input-bordered w-full" required />

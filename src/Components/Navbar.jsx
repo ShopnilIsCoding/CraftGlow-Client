@@ -20,7 +20,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="navbar glass shadow-lg px-4 sm:px-8 sticky z-10">
+      <div className="navbar sticky z-10 container mx-auto">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -64,7 +64,7 @@ const Navbar = () => {
   </div>
   <div className="navbar-end space-x-2">
     <Link to={'/login'} className="btn btn-outline btn-success">Log In</Link>
-    <a className="btn  btn-info">Register</a>
+    <Link to={'/register'} className="btn  btn-info">Register</Link>
     <div className="dropdown dropdown-end">
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
