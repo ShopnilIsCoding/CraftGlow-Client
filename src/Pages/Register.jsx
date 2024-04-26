@@ -5,6 +5,7 @@ import { IoIosEyeOff } from "react-icons/io";
 import { AuthContext } from "../Providers/AuthProvider";
 import Lottie from "lottie-react";
 import register from "../Lotties/register.json"
+import loadingAnim from "../Lotties/loading.json"
 const Register = () => {
     const[visible,setVisible]=useState(false);
     const {createUser,updateUserProfile,loading} =useContext(AuthContext);
@@ -39,6 +40,10 @@ const Register = () => {
            
         })
         .catch(err=>{console.error(err)})
+    }
+    if(loading)
+    {
+       return <div className="size-96 mx-auto"><Lottie animationData={loadingAnim} loop={true}/></div>
     }
     return (
         <div className="">
