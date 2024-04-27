@@ -6,7 +6,7 @@ const Navbar = () => {
   const [theme, setTheme] = useState('coffee')
   const [isHovered, setIsHovered] = useState(false);
   const navigate=useNavigate();
-  const {user,logOut}=useContext(AuthContext);
+  const {user,logOut,loading}=useContext(AuthContext);
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -16,6 +16,7 @@ const Navbar = () => {
   };
   const handleSignOut=()=>
   {
+    setIsHovered(false)
     logOut() 
     .then(()=>{navigate('/')})
     .catch()
@@ -56,7 +57,7 @@ const Navbar = () => {
     isActive ? "border-b-2 border-b-rose-300  p-2 text-rose-300 font-semibold text-center delay-75 transition-all" : " p-2 text-violet-400 font-semibold"
   }>Add Item</NavLink></li>:<></>}
       
-      {user && <li><NavLink to={'/my'} className={({ isActive}) =>
+      {user && <li><NavLink to={`/${user.email}`} className={({ isActive}) =>
     isActive ? "border-b-2 border-b-rose-300  p-2 text-rose-300 font-semibold text-center delay-75 transition-all" : " p-2 text-violet-400   font-semibold"
   }>My List</NavLink></li>} 
 
@@ -112,7 +113,7 @@ const Navbar = () => {
     isActive ? "border-b-2 font-kristi border-b-rose-300  p-2 text-rose-300 font-semibold text-center delay-75 transition-all" : " p-2 text-violet-400 font-semibold"
   }>Add Item</NavLink>}
       
-      {user && <NavLink to={'/my'} className={({ isActive}) =>
+      {user && <NavLink to={`/${user.email}`} className={({ isActive}) =>
     isActive ? "border-b-2 font-kristi border-b-rose-300  p-2 text-rose-300 font-semibold text-center delay-75 transition-all" : " p-2 text-violet-400   font-semibold"
   }>My List</NavLink>}
 
@@ -121,15 +122,14 @@ const Navbar = () => {
   <div className="navbar-end space-x-2">
     {user? <></>:<Link to={'/login'} className="btn btn-outline btn-success font-kristi">Log In</Link>}
     {user? <></>:<Link to={'/register'} className="btn  btn-info font-kristi">Register</Link>}
-    {user && <div className="dropdown dropdown-end" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} >
+    {user && <div className="dropdown dropdown-end"  >
       <div tabIndex={0} role="button" className=" relative avatar lg:tooltip lg:tooltip-bottom" data-tip={user.displayName}>
-        <div className="w-10 rounded-full m-auto" >
+        <div className="w-10 rounded-full m-auto" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
           <img alt="Your Profile" src={ user.photoURL? user.photoURL : '/profile.png'} />
         </div>
         {isHovered && <ul  className="mt-0 z-[10] p-2 shadow menu menu-sm absolute bg-base-100 rounded-box w-32 right-0 top-0">
       
-      <li><a onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={()=>{handleSignOut();
-      handleMouseLeave();}}>Logout</a></li>
+      <li onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}><a  onClick={handleSignOut}>Logout</a></li>
       
     </ul>}
       </div>

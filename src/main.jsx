@@ -12,6 +12,7 @@ import AuthProvider from './Providers/AuthProvider';
 import NotFound from './Pages/NotFound';
 import Home from './Pages/Home';
 import Add from './Pages/Add';
+import MyList from './Pages/MyList';
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,11 @@ const router = createBrowserRouter([
       {
         path:'/add',
         element:<Add></Add>
+      },
+      {
+        path:'/:email',
+        element:<MyList></MyList>,
+        loader:({params})=>fetch(`http://localhost:3000/added/${params.email}`)
       }
     ]
   },
