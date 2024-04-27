@@ -11,6 +11,7 @@ import Register from './Pages/Register';
 import AuthProvider from './Providers/AuthProvider';
 import NotFound from './Pages/NotFound';
 import Home from './Pages/Home';
+import Add from './Pages/Add';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path:'/register',
         element:<Register></Register>
+      },
+      {
+        path:'/add',
+        element:<Add></Add>
       }
     ]
   },
