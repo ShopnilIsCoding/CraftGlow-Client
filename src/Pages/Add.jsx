@@ -16,6 +16,7 @@ const Add = () => {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
     const email = formData.get('email');
+    
     console.log(data);
     fetch("http://localhost:3000/added", {
       method: "Post",

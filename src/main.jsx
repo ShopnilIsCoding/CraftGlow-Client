@@ -13,6 +13,7 @@ import NotFound from './Pages/NotFound';
 import Home from './Pages/Home';
 import Add from './Pages/Add';
 import MyList from './Pages/MyList';
+import All from './Pages/All';
 
 const router = createBrowserRouter([
   {
@@ -27,7 +28,8 @@ const router = createBrowserRouter([
       },
       {
         path:'/all',
-        element:<div>all</div>
+        element:<All></All>,
+        loader:()=>fetch('http://localhost:3000/added')
       },
       {
         path:'/login',
