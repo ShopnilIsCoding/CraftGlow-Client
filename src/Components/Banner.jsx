@@ -8,7 +8,7 @@ import Lottie from 'lottie-react';
 import banneranim from '../Lotties/bannerlottie.json'
 const Banner = () => {
     return (
-        <div className=" rounded-xl flex justify-between items-center p-8 lg:0-16 lg:rounded-3xl mb-4 lg:mb-8 bg-base-200 shadow-xl">
+        <div className=" rounded-b-xl flex justify-between items-center p-8 lg:0-16 lg:rounded-b-3xl mb-4 lg:mb-8 bg-base-200 shadow-xl">
             <div className='w-1/2'>
             <h1 className='text-3xl font-kristi text-center mb-3'><Typewriter words={["Explore the art of Card Making","Discover the elegance of Paper Quilling","Create beauty with Glass Painting","Unleash creativity through Lampworking","Bring color to life with Glass Staining"]} loop={true} cursor={true} cursorStyle={'...'} /></h1>
             

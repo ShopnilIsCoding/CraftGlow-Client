@@ -18,7 +18,7 @@ const Navbar = () => {
 
   const handleToggle = e => {
     if (e.target.checked) {
-      setTheme('light')
+      setTheme('valentine')
     } else {
       setTheme('coffee')
     }
@@ -92,28 +92,28 @@ const Navbar = () => {
       </ul>
     </div>
     <a className="btn btn-ghost md:text-2xl pl-0 lg:text-2xl font-bold bg-gradient-to-r from-orange-300 via-violet-400 to-rose-300
- text-transparent bg-clip-text bg-300% animate-gradient">CraftGlow</a>
+ text-transparent bg-clip-text bg-300% animate-gradient font-kristi">CraftGlow</a>
   </div>
   <div className="navbar-center hidden lg:flex space-x-2">
   <NavLink to={'/'} className={({ isActive}) =>
-    isActive ? "border-b-2 border-b-rose-300  p-2 text-rose-300 font-semibold text-center delay-75 transition-all" : " p-2 text-violet-400 font-semibold"
+    isActive ? "border-b-2 font-kristi border-b-rose-300  p-2 text-rose-300 font-semibold text-center delay-75 transition-all" : " p-2 text-violet-400 font-semibold"
   }>Home</NavLink>
       <NavLink to={'/all'} className={({ isActive}) =>
-    isActive ? "border-b-2 border-b-rose-300  p-2 text-rose-300 font-semibold text-center delay-75 transition-all" : " p-2 text-violet-400 font-semibold"
+    isActive ? "border-b-2 font-kristi border-b-rose-300  p-2 text-rose-300 font-semibold text-center delay-75 transition-all" : " p-2 text-violet-400 font-semibold"
   }>All Items</NavLink>
       {user && <NavLink to={'/add'} className={({ isActive}) =>
-    isActive ? "border-b-2 border-b-rose-300  p-2 text-rose-300 font-semibold text-center delay-75 transition-all" : " p-2 text-violet-400 font-semibold"
+    isActive ? "border-b-2 font-kristi border-b-rose-300  p-2 text-rose-300 font-semibold text-center delay-75 transition-all" : " p-2 text-violet-400 font-semibold"
   }>Add Item</NavLink>}
       
       {user && <NavLink to={'/my'} className={({ isActive}) =>
-    isActive ? "border-b-2 border-b-rose-300  p-2 text-rose-300 font-semibold text-center delay-75 transition-all" : " p-2 text-violet-400   font-semibold"
+    isActive ? "border-b-2 font-kristi border-b-rose-300  p-2 text-rose-300 font-semibold text-center delay-75 transition-all" : " p-2 text-violet-400   font-semibold"
   }>My List</NavLink>}
 
 
   </div>
   <div className="navbar-end space-x-2">
-    {user? <></>:<Link to={'/login'} className="btn btn-outline btn-success">Log In</Link>}
-    {user? <></>:<Link to={'/register'} className="btn  btn-info">Register</Link>}
+    {user? <></>:<Link to={'/login'} className="btn btn-outline btn-success font-kristi">Log In</Link>}
+    {user? <></>:<Link to={'/register'} className="btn  btn-info font-kristi">Register</Link>}
     {user && <div className="dropdown dropdown-end">
       <div tabIndex={0} role="button" className=" avatar lg:tooltip lg:tooltip-left" data-tip={user.displayName}>
         <div className="w-10 rounded-full m-auto" >
