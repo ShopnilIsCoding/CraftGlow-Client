@@ -15,13 +15,14 @@ const Add = () => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
+    const email = formData.get('email');
     console.log(data);
     fetch("http://localhost:3000/added", {
       method: "Post",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify({...data,email:email?email:user.email,userName:user.displayName}),
     })
     .then(res=>res.json())
     .then(resData=>console.log(resData))
@@ -171,8 +172,8 @@ const Add = () => {
             </label>
             <input
               type="text"
-              placeholder="Item Name"
-              name="itemName"
+              placeholder="Your Name"
+              name="userName"
               className="input input-bordered font-kristi"
               disabled
               required
