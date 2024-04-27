@@ -34,7 +34,7 @@ const Login = () => {
     </div>
     <div className="card shrink-0 w-full max-w-sm shadow-2xl ">
         <p className="text-center text-xl font-semibold py-2 font-kristi">WELCOME BACK !</p>
-        <div className="size-40 mx-auto"><Lottie animationData={login} loop={true} /></div>
+        <div className="size-full lg:size-40 mx-auto"><Lottie animationData={login} loop={true} /></div>
       <form  className="card-body my-0 py-0" onSubmit={handleLogin}>
 
         <div className="form-control">
@@ -66,12 +66,12 @@ const Login = () => {
         <button onClick={()=>githubLogin()
         .then(()=>{
             alert("Successfully logged in")
-            navigate(location?.state? location.state : '/')})}  className="btn bg-info border-0"><FaGithub className="text-3xl text-white" /> <span className="text-xl text-white font-semibold">Continue with Github</span>
+            navigate(location?.state? location.state : '/')})}  className="btn bg-info border-0"><FaGithub className="text-3xl text-white" /> <span className="lg:text-xl  text-white font-semibold">Continue with Github</span>
         </button>
         <button onClick={()=>googleLogin()
         .then(()=>{
             alert("Successfully logged in")
-            navigate(location?.state? location.state : '/')})}  className="btn"><FcGoogle className="text-3xl" /><span className="text-xl font-semibold">Continue with Google</span></button>
+            navigate(location?.state? location.state : '/')})}  className="btn"><FcGoogle className="text-3xl" /><span className="lg:text-xl font-semibold">Continue with Google</span></button>
       </div>
       <p className="pl-8 pb-4">Do not have an account ? <span className="link text-info font-semibold"><Link to={'/register'}>Register</Link></span></p>
     </div>

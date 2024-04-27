@@ -4,9 +4,16 @@ import { AuthContext } from '../Providers/AuthProvider';
 
 const Navbar = () => {
   const [theme, setTheme] = useState('coffee')
+  const [isHovered, setIsHovered] = useState(false);
   const navigate=useNavigate();
   const {user,logOut}=useContext(AuthContext);
 
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
   const handleSignOut=()=>
   {
     logOut() 
@@ -31,27 +38,27 @@ const Navbar = () => {
   }, [theme])
 
   return (
-    <div>
-      <div className="navbar sticky z-10 container mx-auto">
+    <div className='sticky z-50 top-0 '>
+      <div className="navbar container mx-auto">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
       </div>
       <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-      <NavLink to={'/'} className={({ isActive}) =>
+      <li><NavLink to={'/'} className={({ isActive}) =>
     isActive ? "border-b-2 border-b-rose-300  p-2 text-rose-300 font-semibold text-center delay-75 transition-all" : " p-2 text-violet-400 font-semibold"
-  }>Home</NavLink>
-      <NavLink to={'/all'} className={({ isActive}) =>
+  }>Home</NavLink></li>
+      <li><NavLink to={'/all'} className={({ isActive}) =>
     isActive ? "border-b-2 border-b-rose-300  p-2 text-rose-300 font-semibold text-center delay-75 transition-all" : " p-2 text-violet-400 font-semibold"
-  }>All Items</NavLink>
-      {user?<NavLink to={'/add'} className={({ isActive}) =>
+  }>All Items</NavLink></li>
+      {user?<li><NavLink to={'/add'} className={({ isActive}) =>
     isActive ? "border-b-2 border-b-rose-300  p-2 text-rose-300 font-semibold text-center delay-75 transition-all" : " p-2 text-violet-400 font-semibold"
-  }>Add Item</NavLink>:<></>}
+  }>Add Item</NavLink></li>:<></>}
       
-      {user && <NavLink to={'/my'} className={({ isActive}) =>
+      {user && <li><NavLink to={'/my'} className={({ isActive}) =>
     isActive ? "border-b-2 border-b-rose-300  p-2 text-rose-300 font-semibold text-center delay-75 transition-all" : " p-2 text-violet-400   font-semibold"
-  }>My List</NavLink>}
+  }>My List</NavLink></li>} 
 
 <label className='cursor-pointer grid place-items-center '>
           <input
@@ -114,17 +121,19 @@ const Navbar = () => {
   <div className="navbar-end space-x-2">
     {user? <></>:<Link to={'/login'} className="btn btn-outline btn-success font-kristi">Log In</Link>}
     {user? <></>:<Link to={'/register'} className="btn  btn-info font-kristi">Register</Link>}
-    {user && <div className="dropdown dropdown-end">
-      <div tabIndex={0} role="button" className=" avatar lg:tooltip lg:tooltip-left" data-tip={user.displayName}>
+    {user && <div className="dropdown dropdown-end" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} >
+      <div tabIndex={0} role="button" className=" relative avatar lg:tooltip lg:tooltip-bottom" data-tip={user.displayName}>
         <div className="w-10 rounded-full m-auto" >
           <img alt="Your Profile" src={ user.photoURL? user.photoURL : '/profile.png'} />
         </div>
+        {isHovered && <ul  className="mt-0 z-[10] p-2 shadow menu menu-sm absolute bg-base-100 rounded-box w-32 right-0 top-0">
+      
+      <li><a onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={()=>{handleSignOut();
+      handleMouseLeave();}}>Logout</a></li>
+      
+    </ul>}
       </div>
-      <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-      <li><Link to={'/update'}>{user.displayName}</Link></li>
-        <li><a onClick={handleSignOut}>Logout</a></li>
-        
-      </ul>
+      
     </div>}
     <label className='cursor-pointer md:grid place-items-center hidden lg:grid '>
           <input
@@ -164,9 +173,9 @@ const Navbar = () => {
         </label>
   </div>
 </div>
+</div>
 
-
-      </div>
+     
   )
 }
 

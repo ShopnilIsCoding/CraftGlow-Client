@@ -43,7 +43,7 @@ const Register = () => {
     }
     if(loading)
     {
-       return <div className="size-96 mx-auto"><Lottie animationData={loadingAnim} loop={true}/></div>
+       return <div className="lg:size-96 mx-auto"><Lottie animationData={loadingAnim} loop={true}/></div>
     }
     return (
         <div className="">
