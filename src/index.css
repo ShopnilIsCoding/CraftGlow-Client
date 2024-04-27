@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@import url('https://fonts.googleapis.com/css2?family=Kristi&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 .animate-gradient {
     background-size: 300%;
@@ -29,4 +29,13 @@
   html {
     cursor: url('/cursor.png') ,auto;
     
+}
+
+.font-kristi
+{
+  font-family: "Kristi", cursive;
+}
+.font-fair
+{
+  font-family: "Playfair Display", serif;
 }

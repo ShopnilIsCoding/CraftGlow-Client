@@ -10,6 +10,7 @@ import Login from './Pages/Login';
 import Register from './Pages/Register';
 import AuthProvider from './Providers/AuthProvider';
 import NotFound from './Pages/NotFound';
+import Home from './Pages/Home';
 
 const router = createBrowserRouter([
   {
@@ -19,7 +20,7 @@ const router = createBrowserRouter([
     children:[
       {
         path:'/',
-        element:<div>home</div>
+        element:<Home></Home>
 
       },
       {
