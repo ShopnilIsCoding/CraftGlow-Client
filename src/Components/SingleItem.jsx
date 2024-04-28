@@ -189,7 +189,7 @@ const SingleItem = ({ item, Delete, Update, itemData, setItemData }) => {
                     placeholder="Item Image URL"
                     name="image"
                     className="input input-bordered font-kristi"
-                    defaultValue={image}
+                    
                   />
                 </div>
                 <div className="form-control lg:w-1/2">
@@ -201,7 +201,7 @@ const SingleItem = ({ item, Delete, Update, itemData, setItemData }) => {
                     placeholder="Item Name"
                     name="itemName"
                     className="input input-bordered font-kristi"
-                    defaultValue={itemName}
+                    
                   />
                 </div>
               </div>
@@ -214,7 +214,7 @@ const SingleItem = ({ item, Delete, Update, itemData, setItemData }) => {
                   <select
                     name="category"
                     className="select select-bordered w-full"
-                    defaultValue={category}
+                   
                   >
                     <option>Card Making</option>
                     <option>Scrapbooking</option>
@@ -233,7 +233,7 @@ const SingleItem = ({ item, Delete, Update, itemData, setItemData }) => {
                     placeholder="Item Price"
                     name="price"
                     className="input input-bordered font-kristi"
-                    defaultValue={price}
+                    
                   />
                 </div>
               </div>
@@ -246,7 +246,7 @@ const SingleItem = ({ item, Delete, Update, itemData, setItemData }) => {
                   placeholder="Short Description"
                   name="description"
                   className="input input-bordered font-kristi"
-                  defaultValue={description}
+                  
                 />
               </div>
               {/* Row */}
@@ -260,7 +260,7 @@ const SingleItem = ({ item, Delete, Update, itemData, setItemData }) => {
                     placeholder="Item Rating"
                     name="rating"
                     className="input input-bordered font-kristi"
-                    defaultValue={rating}
+                   
                   />
                 </div>
                 <div className="form-control lg:w-1/2">
@@ -272,7 +272,7 @@ const SingleItem = ({ item, Delete, Update, itemData, setItemData }) => {
                   <select
                     name="customization"
                     className="select select-bordered w-full"
-                    defaultValue={customization}
+                   
                   >
                     <option>Yes</option>
                     <option>No</option>
@@ -290,7 +290,7 @@ const SingleItem = ({ item, Delete, Update, itemData, setItemData }) => {
                     placeholder="Processing Time"
                     name="time"
                     className="input input-bordered font-kristi"
-                    defaultValue={time}
+                    
                   />
                 </div>
                 <div className="form-control lg:w-1/2">
@@ -300,7 +300,7 @@ const SingleItem = ({ item, Delete, Update, itemData, setItemData }) => {
                   <select
                     name="status"
                     className="select select-bordered w-full"
-                    defaultValue={status}
+                    
                   >
                     <option>In Stock</option>
                     <option>Made By Order</option>
