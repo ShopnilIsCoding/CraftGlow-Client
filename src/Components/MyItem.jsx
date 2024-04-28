@@ -1,10 +1,10 @@
 import SingleItem from "./SingleItem";
 
 
-const MyItem = ({item,Delete,Update}) => {
+const MyItem = ({item,Delete,Update,itemData,setItemData}) => {
     return (
         <div>
-            <SingleItem Delete={Delete} Update={Update} item={item}></SingleItem>
+            <SingleItem itemData={itemData} setItemData={setItemData} Delete={Delete} Update={Update} item={item}></SingleItem>
         </div>
     );
 };
