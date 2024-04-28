@@ -5,7 +5,6 @@ import loadingAnim from "../Lotties/loading.json";
 import Swal from "sweetalert2";
 const Add = () => {
   const { user, loading } = useContext(AuthContext);
-  console.log(user)
   if (loading) {
     return (
       <div className="size-96 mx-auto">
@@ -19,8 +18,6 @@ const Add = () => {
     const data = Object.fromEntries(formData.entries());
     const email = formData.get("email");
     const userPhoto=user.photoURL;
-
-    console.log(data);
     fetch("http://localhost:3000/added", {
       method: "Post",
       headers: {
@@ -34,8 +31,8 @@ const Add = () => {
       }),
     })
       .then((res) => res.json())
-      .then((resData) => console.log(resData));
-      
+      .then((resData) => {if (resData.insertedId)
+    {
       Swal.fire({
         title: "Congratulations!",
         text: "Your Item Successfully Added To Our Database",
@@ -49,6 +46,9 @@ const Add = () => {
           window.location.reload();
         }
       });
+    }});
+      
+      
   };
   return (
     <div className="p-3 hero bg-svg-background">
