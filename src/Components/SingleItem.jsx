@@ -8,6 +8,8 @@ import { MdOutlineEdit } from "react-icons/md";
 import Swal from "sweetalert2";
 import { IoCloseSharp } from "react-icons/io5";
 import { GrUpdate } from "react-icons/gr";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SingleItem = ({ item, Delete, Update, itemData, setItemData }) => {
   const {
@@ -77,7 +79,34 @@ const SingleItem = ({ item, Delete, Update, itemData, setItemData }) => {
     });
   };
 
-  const handleUpdate = () => {};
+  const handleUpdate = (e) => {
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
+    fetch(`http://localhost:3000/added/${_id}`,{
+        method:'PATCH',
+        headers:{
+            'Content-Type':'application/json'
+        },
+        body:JSON.stringify(data)
+    })
+    .then(res=>res.json())
+    .then(upData=>
+    {
+        Swal.fire({
+            title: "Data has been updated!",
+            
+            icon: "success",
+            showCancelButton: false,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Ok"
+          }).then((result) => {
+            if (result.isConfirmed) {
+              window.location.reload();
+            }
+          });
+    })
+  };
   return (
     <div>
       <div className="">
@@ -112,7 +141,7 @@ const SingleItem = ({ item, Delete, Update, itemData, setItemData }) => {
                       <button
                         onClick={() => {
                           document.getElementById("my_modal_5").showModal();
-                          handleUpdate();
+                          
                         }}
                         className="p-2 border rounded-full border-green-600"
                       >
@@ -148,7 +177,7 @@ const SingleItem = ({ item, Delete, Update, itemData, setItemData }) => {
       <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle ">
         <div className="modal-box">
           <div className="modal-action">
-            <form className="card-body w-full" method="dialog">
+            <form className="card-body w-full" method="dialog" onSubmit={handleUpdate}>
               {/* Row */}
               <div className="flex flex-col lg:flex-row md:flex-row gap-3">
                 <div className="form-control lg:w-1/2">
@@ -288,9 +317,9 @@ const SingleItem = ({ item, Delete, Update, itemData, setItemData }) => {
                   <p>Update</p>
                 </button>
               </div>
-              <button className="btn absolute right-0 top-0 border-red-500 btn-error btn-circle btn-outline text-2xl font-bold -translate-x-2 translate-y-2 ">
+              {/* <button className="btn absolute right-0 top-0 border-red-500 btn-error btn-circle btn-outline text-2xl font-bold -translate-x-2 translate-y-2 ">
                 <IoCloseSharp />
-              </button>
+              </button> */}
             </form>
           </div>
         </div>

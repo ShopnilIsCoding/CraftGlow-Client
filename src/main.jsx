@@ -16,6 +16,8 @@ import MyList from './Pages/MyList';
 import All from './Pages/All';
 import ItemDetails from './Components/ItemDetails';
 import PrivateRoutes from './Routes/PrivateRoutes';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const router = createBrowserRouter([
   {
@@ -64,7 +66,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>
     <RouterProvider router={router} />
+    
     </AuthProvider>
-   
+    <ToastContainer />
   </React.StrictMode>,
 )
