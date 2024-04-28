@@ -6,6 +6,7 @@ import { useLoaderData } from "react-router-dom";
 import SingleItem from "../Components/SingleItem";
 const MyList = () => {
     const {user,loading}=useContext(AuthContext);
+    console.log(user);
     const data=useLoaderData();
     console.log(data);
     if(loading)

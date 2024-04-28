@@ -1,6 +1,7 @@
 import { CiStar } from "react-icons/ci";
+import { Link } from "react-router-dom";
 const SingleItem = ({item}) => {
-    const {image,rating,status,itemName,price,userName}=item;
+    const {image,rating,status,itemName,price,userName,_id}=item;
     return (
         <div>
             <div className="font-work p-6 border rounded-3xl hover:border-green-300 hover:border-2 lg:hover:scale-105 cursor-pointer lg:duration-300 space-y-4 bg-base-300">
@@ -20,6 +21,7 @@ const SingleItem = ({item}) => {
                     <p className="font-medium flex justify-center items-center gap-2">{rating}<CiStar className="text-yellow-500 text-xl" /></p>
                 
                 </div>
+                <Link to={`/details/${_id}`}><button className="btn btn-outline">Details</button></Link>
         </div>
         </div>
     );

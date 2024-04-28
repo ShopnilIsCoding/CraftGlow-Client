@@ -127,11 +127,11 @@ const Navbar = () => {
         <div className="w-10 rounded-full m-auto" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
           <img alt="Your Profile" src={ user.photoURL? user.photoURL : '/profile.png'} />
         </div>
-        {isHovered && <ul  className="mt-0 z-[10] p-2 shadow menu menu-sm absolute bg-base-100 rounded-box w-32 right-0 top-0">
+        {isHovered ? <ul  className="mt-0 z-[10] p-2 shadow menu menu-sm absolute bg-base-100 rounded-box w-32 right-0 top-0">
       
       <li onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}><a  onClick={handleSignOut}>Logout</a></li>
       
-    </ul>}
+    </ul>:<></>}
       </div>
       
     </div>}

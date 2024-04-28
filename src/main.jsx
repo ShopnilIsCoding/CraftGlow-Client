@@ -14,6 +14,7 @@ import Home from './Pages/Home';
 import Add from './Pages/Add';
 import MyList from './Pages/MyList';
 import All from './Pages/All';
+import ItemDetails from './Components/ItemDetails';
 
 const router = createBrowserRouter([
   {
@@ -23,7 +24,8 @@ const router = createBrowserRouter([
     children:[
       {
         path:'/',
-        element:<Home></Home>
+        element:<Home></Home>,
+        loader:()=>fetch('http://localhost:3000/added')
 
       },
       {
@@ -47,6 +49,11 @@ const router = createBrowserRouter([
         path:'/:email',
         element:<MyList></MyList>,
         loader:({params})=>fetch(`http://localhost:3000/added/${params.email}`)
+      },
+      {
+        path:'/details/:id',
+        element:<ItemDetails></ItemDetails>,
+        loader:({params})=>fetch(`http://localhost:3000/${params.id}`)
       }
     ]
   },
