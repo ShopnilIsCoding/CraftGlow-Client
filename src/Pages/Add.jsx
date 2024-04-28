@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import Lottie from "lottie-react";
 import loadingAnim from "../Lotties/loading.json";
+import Swal from "sweetalert2";
 const Add = () => {
   const { user, loading } = useContext(AuthContext);
   console.log(user)
@@ -34,6 +35,20 @@ const Add = () => {
     })
       .then((res) => res.json())
       .then((resData) => console.log(resData));
+      
+      Swal.fire({
+        title: "Congratulations!",
+        text: "Your Item Successfully Added To Our Database",
+        icon: "success",
+        showCancelButton: false,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "OK"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.reload();
+        }
+      });
   };
   return (
     <div className="p-3 hero bg-svg-background">

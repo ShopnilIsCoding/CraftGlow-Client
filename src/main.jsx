@@ -15,6 +15,7 @@ import Add from './Pages/Add';
 import MyList from './Pages/MyList';
 import All from './Pages/All';
 import ItemDetails from './Components/ItemDetails';
+import PrivateRoutes from './Routes/PrivateRoutes';
 
 const router = createBrowserRouter([
   {
@@ -43,16 +44,16 @@ const router = createBrowserRouter([
       },
       {
         path:'/add',
-        element:<Add></Add>
+        element:<PrivateRoutes><Add></Add></PrivateRoutes>
       },
       {
         path:'/:email',
-        element:<MyList></MyList>,
+        element:<PrivateRoutes><MyList></MyList></PrivateRoutes>,
         loader:({params})=>fetch(`http://localhost:3000/added/${params.email}`)
       },
       {
         path:'/details/:id',
-        element:<ItemDetails></ItemDetails>,
+        element:<PrivateRoutes><ItemDetails></ItemDetails></PrivateRoutes>,
         loader:({params})=>fetch(`http://localhost:3000/${params.id}`)
       }
     ]
