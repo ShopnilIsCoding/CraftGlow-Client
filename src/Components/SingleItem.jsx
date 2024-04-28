@@ -3,8 +3,10 @@ import { CiStar } from "react-icons/ci";
 import { BsFillArrowUpRightCircleFill } from "react-icons/bs";
 import { HiMiniCurrencyDollar } from "react-icons/hi2";
 import { Link } from "react-router-dom";
+import { RiDeleteBin6Fill } from "react-icons/ri";
+import { MdOutlineEdit } from "react-icons/md";
 
-const SingleItem = ({ item }) => {
+const SingleItem = ({ item,Delete,Update }) => {
     const { image, rating, status, itemName, price, userName, _id, userPhoto,time } = item;
     const [hovered, setHovered] = useState(true);
     const hoverableRef = useRef(null);
@@ -47,9 +49,9 @@ const SingleItem = ({ item }) => {
                                 ref={hoverableRef}
                             >
                                 <img className="card__thumb" src={userPhoto} alt="" />
-                                <div className="card__header-text">
-                                    <h3 className="card__title font-bold">By {userName}</h3>
-                                    <span className="card__status text-secondary font-serif font-extrabold">{itemName}</span>
+                                <div className="w-full">
+                                    <h3 className=" font-bold flex justify-between items-center">By {userName} {Delete && <button><RiDeleteBin6Fill className="text-red-600 text-3xl" /></button>}</h3>
+                                    <span className=" text-secondary font-serif font-extrabold flex justify-between items-center">{itemName} {Update && <button><MdOutlineEdit className=" text-green-600 text-3xl" /></button>}</span>
                                 </div>
                             </div>
                             <p className="card__description">
