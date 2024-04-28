@@ -5,8 +5,11 @@ import { HiMiniCurrencyDollar } from "react-icons/hi2";
 import { Link } from "react-router-dom";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import { MdOutlineEdit } from "react-icons/md";
+import Swal from "sweetalert2";
+import { IoCloseSharp } from "react-icons/io5";
+import { GrUpdate } from "react-icons/gr";
 
-const SingleItem = ({ item, Delete, Update,itemData,setItemData }) => {
+const SingleItem = ({ item, Delete, Update, itemData, setItemData }) => {
   const {
     image,
     rating,
@@ -17,9 +20,13 @@ const SingleItem = ({ item, Delete, Update,itemData,setItemData }) => {
     _id,
     userPhoto,
     time,
+    category,
+    description,
+    customization
   } = item;
   const [hovered, setHovered] = useState(true);
   const hoverableRef = useRef(null);
+  const closeRef = useRef(null);
 
   useEffect(() => {
     const hoverableElement = hoverableRef.current;
@@ -41,20 +48,41 @@ const SingleItem = ({ item, Delete, Update,itemData,setItemData }) => {
   };
 
   const handleDelete = () => {
-    fetch(`http://localhost:3000/delete/${_id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((delData) => {
-        const remainingItemData=itemData.filter(filterData => filterData._id !==item._id)
-        setItemData(remainingItemData);
-      });
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:3000/delete/${_id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((delData) => {
+            const remainingItemData = itemData.filter(
+              (filterData) => filterData._id !== item._id
+            );
+            setItemData(remainingItemData);
+          });
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success",
+        });
+      }
+    });
   };
+
+  const handleUpdate = () => {};
   return (
     <div>
       <div className="">
         <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-          <div  className="card">
+          <div className="card">
             <img
               src={image}
               className="card__image h-[266px] lg:h-[366px] md:h-[300px] w-10/12 rounded-xl mx-auto"
@@ -70,7 +98,10 @@ const SingleItem = ({ item, Delete, Update,itemData,setItemData }) => {
                   <h3 className=" font-bold flex justify-between items-center">
                     By {userName}{" "}
                     {Delete && (
-                      <button onClick={handleDelete} className="p-2 border rounded-full border-red-600">
+                      <button
+                        onClick={handleDelete}
+                        className="p-2 border rounded-full border-red-600"
+                      >
                         <RiDeleteBin6Fill className="text-red-600 text-2xl" />
                       </button>
                     )}
@@ -78,7 +109,13 @@ const SingleItem = ({ item, Delete, Update,itemData,setItemData }) => {
                   <span className=" text-secondary font-serif font-extrabold flex justify-between items-center">
                     {itemName}{" "}
                     {Update && (
-                      <button className="p-2 border rounded-full border-green-600">
+                      <button
+                        onClick={() => {
+                          document.getElementById("my_modal_5").showModal();
+                          handleUpdate();
+                        }}
+                        className="p-2 border rounded-full border-green-600"
+                      >
                         <MdOutlineEdit className=" text-green-600 text-2xl" />
                       </button>
                     )}
@@ -96,10 +133,7 @@ const SingleItem = ({ item, Delete, Update,itemData,setItemData }) => {
                     <CiStar className="text-yellow-500 text-xl" />
                   </p>
                 </div>
-                <div
-                  
-                  className=" mt-2 flex justify-between w-full font-serif font-semibold"
-                >
+                <div className=" mt-2 flex justify-between w-full font-serif font-semibold">
                   {" "}
                   <p>Time : {time}</p>{" "}
                   <Link to={`/details/${_id}`} className="text-3xl">
@@ -111,6 +145,156 @@ const SingleItem = ({ item, Delete, Update,itemData,setItemData }) => {
           </div>
         </div>
       </div>
+      <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle ">
+        <div className="modal-box">
+          <div className="modal-action">
+            <form className="card-body w-full" method="dialog">
+              {/* Row */}
+              <div className="flex flex-col lg:flex-row md:flex-row gap-3">
+                <div className="form-control lg:w-1/2">
+                  <label className="label">
+                    <span className="label-text font-kristi">Image</span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Item Image URL"
+                    name="image"
+                    className="input input-bordered font-kristi"
+                    defaultValue={image}
+                  />
+                </div>
+                <div className="form-control lg:w-1/2">
+                  <label className="label">
+                    <span className="label-text font-kristi">Name</span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Item Name"
+                    name="itemName"
+                    className="input input-bordered font-kristi"
+                    defaultValue={itemName}
+                  />
+                </div>
+              </div>
+              {/* Row */}
+              <div className="flex flex-col lg:flex-row md:flex-row gap-3">
+                <div className="form-control lg:w-1/2">
+                  <label className="label">
+                    <span className="label-text font-kristi">Category</span>
+                  </label>
+                  <select
+                    name="category"
+                    className="select select-bordered w-full"
+                    defaultValue={category}
+                  >
+                    <option>Card Making</option>
+                    <option>Scrapbooking</option>
+                    <option>Paper Quilling & origami</option>
+                    <option>Glass Painting</option>
+                    <option>Lampworking</option>
+                    <option>Glass Dying & Staining</option>
+                  </select>
+                </div>
+                <div className="form-control lg:w-1/2">
+                  <label className="label">
+                    <span className="label-text font-kristi">Price</span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Item Price"
+                    name="price"
+                    className="input input-bordered font-kristi"
+                    defaultValue={price}
+                  />
+                </div>
+              </div>
+              <div className="form-control lg:w-full">
+                <label className="label">
+                  <span className="label-text font-kristi">Description</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Short Description"
+                  name="description"
+                  className="input input-bordered font-kristi"
+                  defaultValue={description}
+                />
+              </div>
+              {/* Row */}
+              <div className="flex flex-col lg:flex-row md:flex-row gap-3">
+                <div className="form-control lg:w-1/2">
+                  <label className="label">
+                    <span className="label-text font-kristi">Rating</span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Item Rating"
+                    name="rating"
+                    className="input input-bordered font-kristi"
+                    defaultValue={rating}
+                  />
+                </div>
+                <div className="form-control lg:w-1/2">
+                  <label className="label">
+                    <span className="label-text font-kristi">
+                      Customization
+                    </span>
+                  </label>
+                  <select
+                    name="customization"
+                    className="select select-bordered w-full"
+                    defaultValue={customization}
+                  >
+                    <option>Yes</option>
+                    <option>No</option>
+                  </select>
+                </div>
+              </div>
+              {/* Row */}
+              <div className="flex flex-col lg:flex-row md:flex-row gap-3">
+                <div className="form-control lg:w-1/2">
+                  <label className="label">
+                    <span className="label-text font-kristi">Time</span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Processing Time"
+                    name="time"
+                    className="input input-bordered font-kristi"
+                    defaultValue={time}
+                  />
+                </div>
+                <div className="form-control lg:w-1/2">
+                  <label className="label">
+                    <span className="label-text font-kristi">Stock Status</span>
+                  </label>
+                  <select
+                    name="status"
+                    className="select select-bordered w-full"
+                    defaultValue={status}
+                  >
+                    <option>In Stock</option>
+                    <option>Made By Order</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="form-control mt-2">
+                <button
+                  type="submit"
+                  className="btn btn-accent font-kristi mx-auto flex justify-center items-center"
+                >
+                    <GrUpdate className="font-bold" />
+                  <p>Update</p>
+                </button>
+              </div>
+              <button className="btn absolute right-0 top-0 border-red-500 btn-error btn-circle btn-outline text-2xl font-bold -translate-x-2 translate-y-2 ">
+                <IoCloseSharp />
+              </button>
+            </form>
+          </div>
+        </div>
+      </dialog>
     </div>
   );
 };
