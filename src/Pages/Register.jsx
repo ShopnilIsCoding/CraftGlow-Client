@@ -6,6 +6,7 @@ import { AuthContext } from "../Providers/AuthProvider";
 import Lottie from "lottie-react";
 import register from "../Lotties/register.json"
 import loadingAnim from "../Lotties/loading.json"
+import Swal from "sweetalert2";
 const Register = () => {
     const[visible,setVisible]=useState(false);
     const {createUser,updateUserProfile,loading} =useContext(AuthContext);
@@ -30,9 +31,13 @@ const Register = () => {
         .then(res=>{console.log(res.user)
           updateUserProfile(name,photo)
           .then(()=>{
-
-             alert('Registered Successfully');
-             window.location.reload();
+            window.location.reload();
+            Swal.fire({
+              title: "Greetings!",
+              text: "Successfully Registered!",
+              icon: "success"
+            });
+             
              
 
           })
@@ -40,10 +45,6 @@ const Register = () => {
            
         })
         .catch(err=>{console.error(err)})
-    }
-    if(loading)
-    {
-       return <div className="lg:size-96 mx-auto"><Lottie animationData={loadingAnim} loop={true}/></div>
     }
     return (
         <div className="">

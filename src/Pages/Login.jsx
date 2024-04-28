@@ -5,6 +5,7 @@ import Lottie from "lottie-react";
 import login from "../Lotties/login.json"
 import { AuthContext } from "../Providers/AuthProvider";
 import { useContext } from "react";
+import Swal from "sweetalert2";
 const Login = () => {
     const {signIn,googleLogin,githubLogin}=useContext(AuthContext)
     const navigate =useNavigate();
@@ -17,11 +18,19 @@ const Login = () => {
         signIn(email,password)
         .then( (res)=>
     {
-        alert("Successfully logged in")
+      Swal.fire({
+        title: "Welcome Back",
+        text: "Successfully logged in!",
+        icon: "success"
+      });
         navigate(location?.state? location.state : '/')
     })
         .catch(()=>{
-            alert('Invalid Credentials')
+          Swal.fire({
+            icon: "error",
+            title: "Invalid Credentials!",
+            text: "Please provide a valid credentials"
+          });
         })
     };
     return (
@@ -65,12 +74,20 @@ const Login = () => {
       <div className=" flex flex-col px-8 py-2 gap-2">
         <button onClick={()=>githubLogin()
         .then(()=>{
-            alert("Successfully logged in")
+          Swal.fire({
+            title: "Welcome Back!",
+            text: "Successfully logged in!",
+            icon: "success"
+          });
             navigate(location?.state? location.state : '/')})}  className="btn bg-info border-0"><FaGithub className="text-3xl text-white" /> <span className="lg:text-xl  text-white font-semibold">Continue with Github</span>
         </button>
         <button onClick={()=>googleLogin()
         .then(()=>{
-            alert("Successfully logged in")
+          Swal.fire({
+            title: "Welcome Back!",
+            text: "Successfully logged in!",
+            icon: "success"
+          });
             navigate(location?.state? location.state : '/')})}  className="btn"><FcGoogle className="text-3xl" /><span className="lg:text-xl font-semibold">Continue with Google</span></button>
       </div>
       <p className="pl-8 pb-4">Do not have an account ? <span className="link text-info font-semibold"><Link to={'/register'}>Register</Link></span></p>
