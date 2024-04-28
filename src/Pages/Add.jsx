@@ -15,18 +15,22 @@ const Add = () => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
-    const email = formData.get('email');
-    
+    const email = formData.get("email");
+
     console.log(data);
     fetch("http://localhost:3000/added", {
       method: "Post",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({...data,email:email?email:user.email,userName:user.displayName}),
+      body: JSON.stringify({
+        ...data,
+        email: email ? email : user.email,
+        userName: user.displayName,
+      }),
     })
-    .then(res=>res.json())
-    .then(resData=>console.log(resData))
+      .then((res) => res.json())
+      .then((resData) => console.log(resData));
   };
   return (
     <div className="p-3 hero bg-svg-background">
@@ -39,7 +43,7 @@ const Add = () => {
             </label>
             <input
               type="text"
-              placeholder="Item Image"
+              placeholder="Item Image URL"
               name="image"
               className="input input-bordered font-kristi"
               required
@@ -64,13 +68,17 @@ const Add = () => {
             <label className="label">
               <span className="label-text font-kristi">Category</span>
             </label>
-            <input
-              type="text"
-              placeholder="Sub-category Name"
+            <select
               name="category"
-              className="input input-bordered font-kristi"
-              required
-            />
+              className="select select-bordered w-full"
+            >
+              <option>Card Making</option>
+              <option>Scrapbooking</option>
+              <option>Paper Quilling & origami</option>
+              <option>Glass Painting</option>
+              <option>Lampworking</option>
+              <option>Glass Dying & Staining</option>
+            </select>
           </div>
           <div className="form-control lg:w-1/2">
             <label className="label">
@@ -115,13 +123,13 @@ const Add = () => {
             <label className="label">
               <span className="label-text font-kristi">Customization</span>
             </label>
-            <input
-              type="text"
-              placeholder="Yes Or No?"
+            <select
               name="customization"
-              className="input input-bordered font-kristi"
-              required
-            />
+              className="select select-bordered w-full"
+            >
+              <option>Yes</option>
+              <option>No</option>
+            </select>
           </div>
         </div>
         {/* Row */}
@@ -142,13 +150,13 @@ const Add = () => {
             <label className="label">
               <span className="label-text font-kristi">Stock Status</span>
             </label>
-            <input
-              type="text"
-              placeholder="In stock Or Made to Order?"
+            <select
               name="status"
-              className="input input-bordered font-kristi"
-              required
-            />
+              className="select select-bordered w-full"
+            >
+              <option>In Stock</option>
+              <option>Made By Order</option>
+            </select>
           </div>
         </div>
         {/* Row */}
