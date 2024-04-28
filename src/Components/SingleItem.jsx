@@ -1,28 +1,70 @@
+import React, { useState, useRef, useEffect } from "react";
 import { CiStar } from "react-icons/ci";
+import { BsFillArrowUpRightCircleFill } from "react-icons/bs";
+import { HiMiniCurrencyDollar } from "react-icons/hi2";
 import { Link } from "react-router-dom";
-const SingleItem = ({item}) => {
-    const {image,rating,status,itemName,price,userName,_id}=item;
+
+const SingleItem = ({ item }) => {
+    const { image, rating, status, itemName, price, userName, _id, userPhoto,time } = item;
+    const [hovered, setHovered] = useState(true);
+    const hoverableRef = useRef(null);
+
+    useEffect(() => {
+        const hoverableElement = hoverableRef.current;
+        if (hoverableElement) {
+            if (hovered) {
+                hoverableElement.classList.add("glass");
+            } else {
+                hoverableElement.classList.remove("glass");
+            }
+        }
+    }, [hovered]);
+
+    const handleMouseEnter = () => {
+        setHovered(false);
+    };
+
+    const handleMouseLeave = () => {
+        setHovered(true);
+    };
+
     return (
         <div>
-            <div className="font-work p-6 border rounded-3xl hover:border-green-300 hover:border-2 lg:hover:scale-105 cursor-pointer lg:duration-300 space-y-4 bg-base-300">
-            <div className="mb-2 lg:mb-6 glass
-            py-6 lg:py-12 rounded-3xl relative">
-                <img className="h-[166px] lg:h-[266px] md:h-[200px] w-10/12 rounded-xl mx-auto" src={image} alt="book_image" />
-                <p className="font-kristi absolute top-0 right-0 bg-green-300 rounded-full p-2 translate-x-[20%] -translate-y-[20%] text-primary">{price}</p>
-            </div>
-            <div className="text-xl text-center font-kristi font-bold">
-                    {itemName}
-                </div>
-                <h2 className="font-fair font-bold text-xl ">{}</h2>
-                <p className="font-medium font-serif">By : {userName}</p>
-                <hr className="border-dashed border-gray-300" />
-                <div className="flex justify-between items-center">
-                    <p className="font-medium">{status}</p>
-                    <p className="font-medium flex justify-center items-center gap-2">{rating}<CiStar className="text-yellow-500 text-xl" /></p>
+            <div className="">
+                <div onMouseEnter={handleMouseEnter}
+                                onMouseLeave={handleMouseLeave}>
+                    <a href="" className="card">
+                        <img
+                            src={image}
+                            className="card__image h-[266px] lg:h-[366px] md:h-[300px] w-10/12 rounded-xl mx-auto"
+                            alt=""
+                        />
+                        <div className="card__overlay bg-base-100 rounded-t-xl" 
+                               >
+                            <div
+                                className="card__header text-primary font-kristi "
+                               
+                                ref={hoverableRef}
+                            >
+                                <img className="card__thumb" src={userPhoto} alt="" />
+                                <div className="card__header-text">
+                                    <h3 className="card__title font-bold">By {userName}</h3>
+                                    <span className="card__status text-secondary font-serif font-extrabold">{itemName}</span>
+                                </div>
+                            </div>
+                            <p className="card__description">
+                            <div className="flex justify-between items-center">
+                    <p className="font-semibold font-serif">{status}</p>
+                    <p className="font-medium flex justify-center items-center gap-2 font-serif"><HiMiniCurrencyDollar className="text-xl " /> {price}</p>
+                    <p className="font-medium flex justify-center items-center gap-2 font-serif">{rating}<CiStar className="text-yellow-500 text-xl" /></p>
                 
                 </div>
-                <Link to={`/details/${_id}`}><button className="btn btn-outline">Details</button></Link>
-        </div>
+                <Link to={`/details/${_id}`} className=" mt-2 flex justify-between w-full font-serif font-semibold"> <p>Time : {time}</p> <button className="text-3xl"><BsFillArrowUpRightCircleFill /></button></Link>
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </div>
     );
 };

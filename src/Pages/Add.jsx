@@ -4,6 +4,7 @@ import Lottie from "lottie-react";
 import loadingAnim from "../Lotties/loading.json";
 const Add = () => {
   const { user, loading } = useContext(AuthContext);
+  console.log(user)
   if (loading) {
     return (
       <div className="size-96 mx-auto">
@@ -16,6 +17,7 @@ const Add = () => {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
     const email = formData.get("email");
+    const userPhoto=user.photoURL;
 
     console.log(data);
     fetch("http://localhost:3000/added", {
@@ -27,6 +29,7 @@ const Add = () => {
         ...data,
         email: email ? email : user.email,
         userName: user.displayName,
+        userPhoto:userPhoto?userPhoto:'/profile.png'
       }),
     })
       .then((res) => res.json())
