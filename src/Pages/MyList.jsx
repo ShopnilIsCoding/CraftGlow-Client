@@ -31,15 +31,13 @@ const MyList = () => {
     if (filteredItems.length <= 0) {
         return (
             <div>
-                <div className="mb-4 w-full ">
-                <label htmlFor="filter" className="mr-2">
-                    Filter by customization:
-                </label>
+                <div className=" ">
+               
                 <select
                     id="filter"
                     value={filter}
                     onChange={handleFilterChange}
-                    className="border border-gray-300 p-2"
+                    className="select select-bordered w-full "
                 >
                     <option value="All">All</option>
                     <option value="Yes">Yes</option>
@@ -56,15 +54,15 @@ const MyList = () => {
     return (
         <div>
             {/*filtering */}
-            <div className="mb-4">
-                <label htmlFor="filter" className="mr-2">
+            <div className="mb-4 max-w-[50%] flex justify-center items-center mx-auto my-4 lg:my-8">
+                <label htmlFor="filter" className="mr-2 font-kristi text-xl">
                     Filter by customization:
                 </label>
                 <select
                     id="filter"
                     value={filter}
                     onChange={handleFilterChange}
-                    className="border border-gray-300 p-2"
+                    className="select select-bordered w-[25%] "
                 >
                     <option value="All">All</option>
                     <option value="Yes">Yes</option>
