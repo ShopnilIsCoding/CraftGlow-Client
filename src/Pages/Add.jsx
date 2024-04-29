@@ -3,8 +3,10 @@ import { AuthContext } from "../Providers/AuthProvider";
 import Lottie from "lottie-react";
 import loadingAnim from "../Lotties/loading.json";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 const Add = () => {
   const { user, loading } = useContext(AuthContext);
+  const navigate=useNavigate()
   if (loading) {
     return (
       <div className="size-96 mx-auto">
@@ -43,7 +45,7 @@ const Add = () => {
         confirmButtonText: "OK"
       }).then((result) => {
         if (result.isConfirmed) {
-          window.location.reload();
+          navigate(`/${user.email}`)
         }
       });
     }});

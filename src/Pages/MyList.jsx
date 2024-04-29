@@ -36,18 +36,7 @@ const MyList = () => {
   if (filteredItems.length <= 0) {
     return (
       <div>
-        <div className=" ">
-          <select
-            id="filter"
-            value={filter}
-            onChange={handleFilterChange}
-            className="select select-bordered w-full "
-          >
-            <option value="All">All</option>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-          </select>
-        </div>
+        
         <p className="text-center text-xl font-semibold py-2 text-primary">
           No items added yet
         </p>
