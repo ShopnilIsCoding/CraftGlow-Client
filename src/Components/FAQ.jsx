@@ -13,18 +13,18 @@ const FAQ = () => {
     return (
         <div className="my-4 lg:my-8">
             <div className="text-center my-4 lg:my-8">
-                <h2 className="text-3xl font-extrabold font-kristi sm:text-4xl" data-aos="zoom-in-down">
+                <h2 className="text-3xl font-extrabold font-kristi sm:text-4xl" >
                     Get Answers and Share Your Thoughts
                 </h2>
                 <p className="mt-4 text-lg text-rose-400 font-serif mx-auto lg:max-w-lg" data-aos="zoom-in-down">
                     Have questions about our paper crafts and glass art products? Use the form below to ask anything you need or provide us with your valuable insights.
                 </p>
             </div>
-            <div className="container mx-auto flex flex-wrap items-start justify-between mt-3 lg:py-12 lg:px-4 lg:shadow-md border border-base-300 lg:border-base-300 rounded-lg glass bg-violet-200" >
+            <div className="container mx-auto flex flex-wrap items-start justify-between mt-3 lg:py-12 lg:px-4 lg:shadow-md border border-base-300 lg:border-base-300 rounded-lg glass  bg-base-300" >
                 {/* Left side - Ask Question */}
                 <div className="w-full lg:w-1/3 mb-8 lg:mb-0 h-full">
                     <div className=" p-8 rounded-lg shadow-md lg:shadow-none h-full flex flex-col">
-                        <h2 className="text-2xl font-semibold mb-6 text-primary">Have a Question or Feedback?</h2>
+                        <h2 className="text-2xl font-semibold mb-6 ">Have a Question or Feedback?</h2>
                         <form onSubmit={send}>
                         <div className="flex items-center mb-4">
                             <input type="text" placeholder="Your Email" name="email" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" required/>
@@ -42,7 +42,7 @@ const FAQ = () => {
                 {/* Right side - FAQ */}
                 <div className="w-full lg:w-2/3">
                     <div className=" p-8 rounded-lg ">
-                        <h2 className="text-2xl font-semibold mb-6 text-primary font-serif text-black">Frequently Asked Questions</h2>
+                        <h2 className="text-2xl font-semibold mb-6  font-serif ">Frequently Asked Questions</h2>
 
                         {/* FAQ items */}
                         <div className="accordion">
