@@ -79,10 +79,11 @@ const SingleItem = ({ item, Delete, Update, itemData, setItemData }) => {
     });
   };
 
-  const handleUpdate = (e) => {
+  const handleUpdate = (e,_id) => {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
-    fetch(`http://localhost:3000/added/${_id}`,{
+    console.log(_id)
+    fetch(`http://localhost:3000/update/${_id}`,{
         method:'PATCH',
         headers:{
             'Content-Type':'application/json'
@@ -140,7 +141,7 @@ const SingleItem = ({ item, Delete, Update, itemData, setItemData }) => {
                     {Update && (
                       <button
                         onClick={() => {
-                          document.getElementById("my_modal_5").showModal();
+                          document.getElementById(`my-modal-${_id}`).showModal();
                           
                         }}
                         className="p-2 border rounded-full border-green-600"
@@ -174,10 +175,10 @@ const SingleItem = ({ item, Delete, Update, itemData, setItemData }) => {
           </div>
         </div>
       </div>
-      <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle ">
+      <dialog id={`my-modal-${_id}`} className="modal modal-bottom sm:modal-middle ">
         <div className="modal-box">
           <div className="modal-action">
-            <form className="card-body w-full" method="dialog" onSubmit={handleUpdate}>
+            <form className="card-body w-full" method="dialog" onSubmit={(e)=>handleUpdate(e,item._id)}>
               {/* Row */}
               <div className="flex flex-col lg:flex-row md:flex-row gap-3">
                 <div className="form-control lg:w-1/2">

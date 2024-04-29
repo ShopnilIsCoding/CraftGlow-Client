@@ -10,6 +10,7 @@ const MyList = () => {
     const data = useLoaderData();
     const [itemData, setItemData] = useState(data);
     const [filter, setFilter] = useState("All");
+    
     const handleFilterChange = (e) => {
         setFilter(e.target.value);
     };
@@ -26,7 +27,7 @@ const MyList = () => {
             </div>
         );
     }
-
+    console.log(filteredItems)
     if (filteredItems.length <= 0) {
         return (
             <div>
