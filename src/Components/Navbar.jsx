@@ -3,10 +3,11 @@ import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../Providers/AuthProvider';
 
 const Navbar = () => {
-  const [theme, setTheme] = useState('coffee')
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'coffee');
   const [isHovered, setIsHovered] = useState(false);
   const navigate=useNavigate();
   const {user,logOut,loading}=useContext(AuthContext);
+  const [isChecked, setIsChecked] = useState(() => theme === 'valentine');
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -25,17 +26,14 @@ const Navbar = () => {
 
 
   const handleToggle = e => {
-    if (e.target.checked) {
-      setTheme('valentine')
-    } else {
-      setTheme('coffee')
-    }
+    const selectedTheme = e.target.checked ? 'valentine' : 'coffee';
+    setTheme(selectedTheme);
+    setIsChecked(e.target.checked);
+    localStorage.setItem('theme', selectedTheme);
   }
 
   useEffect(() => {
-    localStorage.setItem('theme', theme)
-    const localTheme = localStorage.getItem('theme')
-    document.querySelector('html').setAttribute('data-theme', localTheme)
+    document.querySelector('html').setAttribute('data-theme', theme);
   }, [theme])
 
   return (
@@ -139,6 +137,7 @@ const Navbar = () => {
           <input
             type='checkbox'
             onChange={handleToggle}
+            checked={isChecked}
             className='toggle theme-controller bg-base-content row-start-1 col-start-1 col-span-2'
           />
           <svg
