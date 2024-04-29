@@ -26,7 +26,8 @@ const Home = () => {
             </div>: slicedData.map(item=><SingleItem delete={false} update={false} item={item} key={item._id}></SingleItem>)}
 
             </div>
-            <div >
+            <div className="lg:mb-12">
+            <h1 className="text-5xl font-kristi text-center mt-10">Categories</h1>
                 <Categories></Categories>
             </div>
         </div>

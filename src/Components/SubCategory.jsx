@@ -1,13 +1,14 @@
 
 import { ImFire } from "react-icons/im";
+import { Link } from "react-router-dom";
 const SubCategory = ({item}) => {
     return (
-        <div>
+        <Link to={`/item/${item.category}`}>
             <section>
 	<div >
 		<div className="col-md-4 col-sm-6 col-xs-12">
-			<div className="cards">
-				<div className="cover "style={{ 
+			<div className="cards ">
+				<div className="cover rounded-xl"style={{ 
                                     backgroundImage: `url(${item.image})`,
                                     backgroundSize: 'cover',
                                     backgroundPosition: 'center center'
@@ -24,7 +25,7 @@ const SubCategory = ({item}) => {
 		
 	</div>
 </section>
-        </div>
+        </Link>
     );
 };
 

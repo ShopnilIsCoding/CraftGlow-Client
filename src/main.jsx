@@ -19,6 +19,7 @@ import ItemDetails from './Components/ItemDetails';
 import PrivateRoutes from './Routes/PrivateRoutes';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import CategoryData from './Pages/CategoryData';
 
 const router = createBrowserRouter([
   {
@@ -58,6 +59,12 @@ const router = createBrowserRouter([
         path:'/details/:id',
         element:<PrivateRoutes><ItemDetails></ItemDetails></PrivateRoutes>,
         loader:({params})=>fetch(`http://localhost:3000/details/${params.id}`)
+      },
+      {
+        path:'/item/:category',
+        element:<CategoryData></CategoryData>,
+        loader:({params})=>fetch(`http://localhost:3000/item/categories/${params.category}`)
+        
       }
     ]
   },
