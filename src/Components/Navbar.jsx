@@ -1,13 +1,18 @@
 import { useContext, useEffect, useState } from 'react'
-import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../Providers/AuthProvider';
 
 const Navbar = () => {
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'coffee');
   const [isHovered, setIsHovered] = useState(false);
   const navigate=useNavigate();
+  const location = useLocation();
   const {user,logOut,loading}=useContext(AuthContext);
   const [isChecked, setIsChecked] = useState(() => theme === 'valentine');
+  useEffect(() => {
+    
+    setIsHovered(false);
+}, [location]);
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -17,7 +22,7 @@ const Navbar = () => {
   };
   const handleSignOut=()=>
   {
-    setIsHovered(false)
+    // setIsHovered(false)
     logOut() 
     .then(()=>{navigate('/')})
     .catch()
@@ -120,19 +125,21 @@ const Navbar = () => {
   <div className="navbar-end space-x-2">
     {user? <></>:<Link to={'/login'} className="btn btn-outline btn-success font-kristi">Log In</Link>}
     {user? <></>:<Link to={'/register'} className="btn  btn-info font-kristi">Register</Link>}
-    {user && <div className="dropdown dropdown-end"  >
-      <div tabIndex={0} role="button" className=" relative avatar lg:tooltip lg:tooltip-bottom" data-tip={user.displayName}>
-        <div className="w-10 rounded-full m-auto" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    {user ? <div className="dropdown dropdown-end"  >
+      <div tabIndex={0} role="button" className=" relative avatar lg:tooltip lg:tooltip-bottom" data-tip={user.displayName} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+        <div className="w-10 rounded-full m-auto" >
           <img alt="Your Profile" src={ user.photoURL? user.photoURL : '/profile.png'} />
         </div>
-        {isHovered ? <ul  className="mt-0 z-[10] p-2 shadow menu menu-sm absolute bg-base-100 rounded-box w-32 right-0 top-0">
-      
-      <li onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}><a  onClick={handleSignOut}>Logout</a></li>
-      
-    </ul>:<></>}
+        {isHovered ? (
+    <ul className="mt-0 p-2 shadow menu menu-sm absolute bg-base-100 rounded-box w-32 right-0 top-0">
+        <li onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+            <a onClick={handleSignOut}>Logout</a>
+        </li>
+    </ul>
+) : null}
       </div>
       
-    </div>}
+    </div> : <></>}
     <label className='cursor-pointer md:grid place-items-center hidden lg:grid '>
           <input
             type='checkbox'
