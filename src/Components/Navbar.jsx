@@ -1,7 +1,10 @@
 import { useContext, useEffect, useState } from 'react'
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../Providers/AuthProvider';
-
+import { FaHome } from "react-icons/fa";
+import { RiStackFill } from "react-icons/ri";
+import { IoBagAdd } from "react-icons/io5";
+import { IoMdPerson } from "react-icons/io";
 const Navbar = () => {
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'coffee');
   const [isHovered, setIsHovered] = useState(false);
@@ -64,14 +67,15 @@ const Navbar = () => {
     isActive ? "border-b-2 border-b-rose-300  p-2 text-rose-300 font-semibold text-center delay-75 transition-all" : " p-2 text-violet-400   font-semibold"
   }>My List</NavLink></li>} 
 
-<label className='cursor-pointer grid place-items-center '>
+<label className='cursor-pointer grid place-items-center lg:hidden '>
           <input
             type='checkbox'
             onChange={handleToggle}
-            className='toggle theme-controller bg-base-content row-start-1 col-start-1 col-span-2'
+            checked={isChecked}
+            className='toggle theme-controller bg-base-content row-start-1 col-start-1 col-span-12'
           />
           <svg
-            className='col-start-1 row-start-1 stroke-error fill-stroke-error'
+            className='col-start-7 row-start-1 stroke-base-100 fill-base-100'
             xmlns='http://www.w3.org/2000/svg'
             width='14'
             height='14'
@@ -86,7 +90,7 @@ const Navbar = () => {
             <path d='M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4' />
           </svg>
           <svg
-            className='col-start-2 row-start-1 stroke-warning fill-stroke-warning'
+            className='col-start-6 row-start-1 stroke-base-100 fill-base-100'
             xmlns='http://www.w3.org/2000/svg'
             width='14'
             height='14'
@@ -107,18 +111,18 @@ const Navbar = () => {
   </div>
   <div className="navbar-center hidden lg:flex space-x-2">
   <NavLink to={'/'} className={({ isActive}) =>
-    isActive ? "border-b-2 font-kristi border-b-rose-300  p-2 text-rose-300 font-semibold text-center delay-75 transition-all" : " p-2 text-violet-400 font-semibold"
-  }>Home</NavLink>
+    isActive ? "flex gap-1 items-center border-b-2 font-kristi border-b-rose-300  p-2 text-rose-300 font-semibold text-center delay-75 transition-all" : " p-2 text-violet-400 flex gap-1 items-center font-semibold"
+  }><FaHome></FaHome>Home</NavLink>
       <NavLink to={'/all'} className={({ isActive}) =>
-    isActive ? "border-b-2 font-kristi border-b-rose-300  p-2 text-rose-300 font-semibold text-center delay-75 transition-all" : " p-2 text-violet-400 font-semibold"
-  }>All Items</NavLink>
+    isActive ? "border-b-2 flex gap-1 items-center font-kristi border-b-rose-300  p-2 text-rose-300 font-semibold text-center delay-75 transition-all" : " p-2 text-violet-400 flex gap-1 items-center font-semibold"
+  }><RiStackFill></RiStackFill>All Items</NavLink>
       {user && <NavLink to={'/add'} className={({ isActive}) =>
-    isActive ? "border-b-2 font-kristi border-b-rose-300  p-2 text-rose-300 font-semibold text-center delay-75 transition-all" : " p-2 text-violet-400 font-semibold"
-  }>Add Item</NavLink>}
+    isActive ? "border-b-2 flex gap-1 items-center font-kristi border-b-rose-300  p-2 text-rose-300 font-semibold text-center delay-75 transition-all" : " p-2 text-violet-400 flex gap-1 items-center font-semibold"
+  }><IoBagAdd></IoBagAdd> Add Item</NavLink>}
       
       {user && <NavLink to={`/${user.email}`} className={({ isActive}) =>
-    isActive ? "border-b-2 font-kristi border-b-rose-300  p-2 text-rose-300 font-semibold text-center delay-75 transition-all" : " p-2 text-violet-400   font-semibold"
-  }>My List</NavLink>}
+    isActive ? "border-b-2 flex gap-1 items-center font-kristi border-b-rose-300  p-2 text-rose-300 font-semibold text-center delay-75 transition-all" : " p-2 text-violet-400 flex gap-1 items-center   font-semibold"
+  }><IoMdPerson></IoMdPerson> My List</NavLink>}
 
 
   </div>

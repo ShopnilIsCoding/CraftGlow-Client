@@ -109,13 +109,13 @@ const SingleItem = ({ item, Delete, Update, itemData, setItemData }) => {
     })
   };
   return (
-    <div>
+    <div data-aos="fade-up" data-aos-duration="1000">
       <div className="">
         <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
           <div className="card">
             <img
               src={image}
-              className="card__image h-[266px] lg:h-[366px] md:h-[300px] w-10/12 rounded-xl mx-auto"
+              className="card__image h-[266px] lg:h-[366px] md:h-[300px] w-full rounded-xl mx-auto"
               alt=""
             />
             <div className="card__overlay bg-base-100 rounded-t-xl">

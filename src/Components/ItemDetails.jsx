@@ -35,12 +35,12 @@ if (isLoading) {
 	);
 }
   return (
-    <div>
+    <div >
       <div
         id="container"
-        className=" shadow-rose-100 flex flex-col-reverse lg:flex-row justify-between lg:h-[350px] lg:w-[700px]"
+        className=" shadow-rose-100 flex flex-col-reverse lg:flex-row justify-between lg:h-[400px] lg:w-[700px]"
       >
-        <div className="product-details lg:w-1/2">
+        <div className="product-details lg:w-1/2 overflow-y-scroll">
           <div className="size-14 mx-auto">
             <img
               className="rounded-full"
@@ -48,14 +48,14 @@ if (isLoading) {
               alt=""
             />
           </div>
-          <h1>{itemName}</h1>
+          <div className="text-2xl font-bold mb-1 font-kristi text-indigo-400">{itemName}</div>
           <p className="information">{description}</p>
-          <button className="btn cursor-not-allowed bg-info text-white font-bold font-serif text-xl flex w-full justify-center mt-6 lg:mt-12 border-0">
+          <button className="btn cursor-not-allowed bg-info text-white font-bold font-serif text-xl flex w-full justify-center mt-2 border-0">
             {price}
           </button>
         </div>
 
-        <div className="product-image w-full h-[350px] lg:w-1/2">
+        <div className="product-image w-full h-[400px] lg:w-1/2">
           <img src={image} alt="" />
 
           <div className="info text-info">

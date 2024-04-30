@@ -1,7 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
-
+import AOS from 'aos';
+import 'aos/dist/aos.css'; 
 import {
   createBrowserRouter,
   RouterProvider,
@@ -20,7 +21,7 @@ import PrivateRoutes from './Routes/PrivateRoutes';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import CategoryData from './Pages/CategoryData';
-
+AOS.init();
 const router = createBrowserRouter([
   {
     path: "/",

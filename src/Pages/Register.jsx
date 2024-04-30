@@ -7,6 +7,7 @@ import Lottie from "lottie-react";
 import register from "../Lotties/register.json"
 import loadingAnim from "../Lotties/loading.json"
 import Swal from "sweetalert2";
+import { toast } from "react-toastify";
 const Register = () => {
     const[visible,setVisible]=useState(false);
     const {createUser,updateUserProfile,loading} =useContext(AuthContext);
@@ -23,7 +24,7 @@ const Register = () => {
         console.log(newUser);
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
         if (!passwordRegex.test(password)) {
-            alert('Password must be at least 6 characters and contain at least one uppercase and one lowercase letter.');
+            toast.warning('Password must be at least 6 characters and contain at least one uppercase and one lowercase letter.');
             return;
           }
 

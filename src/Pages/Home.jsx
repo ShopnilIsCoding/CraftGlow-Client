@@ -60,8 +60,8 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <h1 className="text-5xl font-kristi text-center mt-10">Craft Items</h1>
-            <p className="mt-4 text-lg text-rose-400 font-serif mx-auto lg:max-w-lg text-center">Explore our carefully curated collection of crafted items, hand-selected for their quality and artistic flair. From beautifully crafted cards to stunning glass art, each piece is designed to inspire and impress.</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-8 mt-3 lg:mt-6 p-3 lg:p-6">
+            <p className="mt-4 text-lg text-rose-400 font-serif mx-auto lg:max-w-lg text-center" data-aos="zoom-in-down">Explore our carefully curated collection of crafted items, hand-selected for their quality and artistic flair. From beautifully crafted cards to stunning glass art, each piece is designed to inspire and impress.</p>
+            <div  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-8 mt-3 lg:mt-6 p-3 lg:p-6">
             {isLoading?<div className="lg:size-96 mx-auto">
                 <Lottie animationData={loadingAnim} loop={true} />
             </div>: slicedData.map(item=><SingleItem delete={false} update={false} item={item} key={item._id}></SingleItem>)}
@@ -69,12 +69,14 @@ const Home = () => {
             </div>
             <div className="lg:mb-12">
             <h1 className="text-5xl font-kristi text-center mt-10">Categories</h1>
-            <p className="mt-4 text-lg text-rose-400 font-serif mx-auto lg:max-w-lg text-center">Discover our range of creative categories! From card making to glass painting, explore each section to find your best match. Click on a category card to browse related items !</p>
+            <p className="mt-4 text-lg text-rose-400 font-serif mx-auto lg:max-w-lg text-center" data-aos="zoom-in-down">Discover our range of creative categories! From card making to glass painting, explore each section to find your best match. Click on a category card to browse related items !</p>
+                <div >
                 <Categories></Categories>
+                </div>
             </div>
             <div className="lg:mb-12">
             <h1 className="text-5xl font-kristi text-center mt-10">What Our Customer Says</h1>
-            <p className="mt-4 text-lg text-rose-400 font-serif mx-auto lg:max-w-lg text-center">At CraftGlow, we value our customers' experiences and feedback. Our 'What Our Customers Say' section features testimonials from our satisfied clients who have used our paper crafts and glass art products.</p>
+            <p className="mt-4 text-lg text-rose-400 font-serif mx-auto lg:max-w-lg text-center" data-aos="zoom-in-down">At CraftGlow, we value our customers' experiences and feedback. Our 'What Our Customers Say' section features testimonials from our satisfied clients who have used our paper crafts and glass art products.</p>
                 <Marquee pauseOnHover={true} className="cursor-pointer">
                     {customerReviews.map((review, index) => (
                         <CustomerReview key={index} review={review} />

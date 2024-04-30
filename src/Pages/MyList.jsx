@@ -33,7 +33,7 @@ const MyList = () => {
     );
   }
   console.log(filteredItems);
-  if (filteredItems.length <= 0) {
+  if (data.length <= 0) {
     return (
       <div>
         
@@ -45,9 +45,9 @@ const MyList = () => {
   }
 
   return (
-    <div>
+    <div className="">
       {/*filtering */}
-      <div className="mb-4 max-w-[50%] flex justify-center items-center mx-auto my-4 lg:my-8">
+      <div className="mb-4 lg:max-w-[50%] flex justify-center items-center mx-auto my-4 lg:my-8 ">
         <label htmlFor="filter" className="mr-2 font-kristi text-xl">
           Filter by customization:
         </label>
@@ -64,7 +64,7 @@ const MyList = () => {
       </div>
 
       {/* filtered items */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-8 mt-3 lg:mt-6 p-3 lg:p-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-8 mt-3 lg:mt-6 p-3 lg:p-6 mx-auto">
         {filteredItems.map((item) => (
           <MyItem
             itemData={itemData}

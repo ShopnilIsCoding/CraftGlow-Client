@@ -11,7 +11,7 @@ const FAQ = () => {
     };
 
     return (
-        <div className="my-4 lg:my-8">
+        <div className="my-4 lg:my-8" >
             <div className="text-center my-4 lg:my-8">
                 <h2 className="text-3xl font-extrabold font-kristi sm:text-4xl" >
                     Get Answers and Share Your Thoughts
@@ -20,7 +20,7 @@ const FAQ = () => {
                     Have questions about our paper crafts and glass art products? Use the form below to ask anything you need or provide us with your valuable insights.
                 </p>
             </div>
-            <div className="container mx-auto flex flex-wrap items-start justify-between mt-3 lg:py-12 lg:px-4 lg:shadow-md border border-base-300 lg:border-base-300 rounded-lg glass  bg-base-300" >
+            <div className="container mx-auto flex flex-wrap items-start justify-between mt-3 lg:py-12 lg:px-4 lg:shadow-md border border-base-300 lg:border-base-300 rounded-lg glass  bg-base-300" data-aos="flip-up" data-aos-duration="500">
                 {/* Left side - Ask Question */}
                 <div className="w-full lg:w-1/3 mb-8 lg:mb-0 h-full">
                     <div className=" p-8 rounded-lg shadow-md lg:shadow-none h-full flex flex-col">
