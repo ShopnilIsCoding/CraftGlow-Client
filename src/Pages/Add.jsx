@@ -20,7 +20,7 @@ const Add = () => {
     const data = Object.fromEntries(formData.entries());
     const email = formData.get("email");
     const userPhoto=user.photoURL;
-    fetch("http://localhost:3000/added", {
+    fetch("https://craftglow.vercel.app/added", {
       method: "Post",
       headers: {
         "Content-Type": "application/json",

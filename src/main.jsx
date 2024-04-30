@@ -30,13 +30,13 @@ const router = createBrowserRouter([
       {
         path:'/',
         element:<Home></Home>,
-        loader:()=>fetch('http://localhost:3000/added')
+        loader:()=>fetch('https://craftglow.vercel.app/added')
 
       },
       {
         path:'/all',
         element:<All></All>,
-        loader:()=>fetch('http://localhost:3000/added')
+        loader:()=>fetch('https://craftglow.vercel.app/added')
       },
       {
         path:'/login',
@@ -53,17 +53,17 @@ const router = createBrowserRouter([
       {
         path:'/:email',
         element:<PrivateRoutes><MyList></MyList></PrivateRoutes>,
-        loader:({params})=>fetch(`http://localhost:3000/added/${params.email}`)
+        loader:({params})=>fetch(`https://craftglow.vercel.app/added/${params.email}`)
       },
       {
         path:'/details/:id',
         element:<PrivateRoutes><ItemDetails></ItemDetails></PrivateRoutes>,
-        loader:({params})=>fetch(`http://localhost:3000/details/${params.id}`)
+        loader:({params})=>fetch(`https://craftglow.vercel.app/details/${params.id}`)
       },
       {
         path:'/item/:category',
         element:<CategoryData></CategoryData>,
-        loader:({params})=>fetch(`http://localhost:3000/item/categories/${params.category}`)
+        loader:({params})=>fetch(`https://craftglow.vercel.app/item/categories/${params.category}`)
         
       }
     ]

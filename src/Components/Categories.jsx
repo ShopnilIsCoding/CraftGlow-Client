@@ -4,7 +4,7 @@ import SubCategory from "./SubCategory";
 const Categories = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:3000/item/categories")
+    fetch("https://craftglow.vercel.app/item/categories")
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);

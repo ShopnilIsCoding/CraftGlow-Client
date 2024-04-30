@@ -60,7 +60,7 @@ const SingleItem = ({ item, Delete, Update, itemData, setItemData }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/delete/${_id}`, {
+        fetch(`https://craftglow.vercel.app/delete/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -83,7 +83,7 @@ const SingleItem = ({ item, Delete, Update, itemData, setItemData }) => {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
     console.log(_id)
-    fetch(`http://localhost:3000/update/${_id}`,{
+    fetch(`https://craftglow.vercel.app/update/${_id}`,{
         method:'PATCH',
         headers:{
             'Content-Type':'application/json'
