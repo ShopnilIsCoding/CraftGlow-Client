@@ -1,7 +1,7 @@
 import { BsFillArrowUpRightCircleFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 const AllSingleItem = ({item}) => {
-    console.log(item)
+    
     return (
         
         <>

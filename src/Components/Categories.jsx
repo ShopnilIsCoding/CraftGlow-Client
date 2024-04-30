@@ -8,7 +8,7 @@ const Categories = () => {
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);
-  console.log(data);
+  
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-8 my-3 lg:my-6 p-3 lg:p-6  rounded-xl shadow-xl bg-base-100">
 

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 const ItemDetails = () => {
   const data = useLoaderData();
-  console.log(data);
+  
   const {
     image,
     rating,

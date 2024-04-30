@@ -32,7 +32,7 @@ const MyList = () => {
       </div>
     );
   }
-  console.log(filteredItems);
+  
   if (data.length <= 0) {
     return (
       <div>
