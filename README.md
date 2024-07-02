@@ -34,8 +34,8 @@ Make sure you have the following installed on your system:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/ShopnilIsCoding/Jobnest-Client.git
-   cd jobnest
+   git clone https://github.com/ShopnilIsCoding/CraftGlow-Client.git
+   cd craftGlow
 2. Install dependencies:
    ```bash
    npm install
